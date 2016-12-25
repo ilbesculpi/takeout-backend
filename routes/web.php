@@ -13,6 +13,13 @@
 
 Route::get('/', 'HomeController@home');
 
+// Auth routes
+Route::group(['namespace' => 'Auth'], function() {
+	
+	
+	
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
