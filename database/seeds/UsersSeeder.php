@@ -27,18 +27,9 @@ class UsersSeeder extends Seeder
 		],
 		[
 			'id' => 3,
-			'name' => 'Diana Acosta',
-			'email' => 'diana.acosta@gmail.com',
-			'password' => '123456',
-			'avatar' => User::DEFAULT_PICTURE,
-			'role' => User::ROLE_ADMIN,
-			'status' => User::STATUS_ACTIVE
-		],
-		[
-			'id' => 4,
-			'name' => 'Chris Thorpe',
-			'email' => 'chris.thorpe@gmail.com',
-			'password' => '123456',
+			'name' => 'Legna Filloy',
+			'email' => 'legna.filloy@gmail.com',
+			'password' => 'qwerty',
 			'avatar' => User::DEFAULT_PICTURE,
 			'role' => User::ROLE_ADMIN,
 			'status' => User::STATUS_ACTIVE
