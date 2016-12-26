@@ -63,6 +63,11 @@ class User extends Authenticatable
 		return $this->role === self::ROLE_GUEST;
 	}
 	
+	public function getAvatarUrlAttribute()
+	{
+		return $this->avatar ? url($this->avatar) : null;
+	}
+	
 	
 	//
 	// METHODS

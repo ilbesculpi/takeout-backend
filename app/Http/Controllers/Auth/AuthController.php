@@ -17,12 +17,22 @@ class AuthController extends Controller {
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
-		$settings = Settings::getAppSettings();
-		view()->share([
-			'settings' => $settings
-		]);
+		
+		// shared view vars
+		$this->middleware(function($request, $next) {
+            $settings = Settings::getAppSettings();
+			view()->share([
+				'settings' => $settings
+			]);
+            return $next($request);
+        });
+		
     }
 	
+	/**
+	 * Get the login page.
+	 * @return Illuminate\Http\Response
+	 */
 	public function getLogin()
 	{
 		return view('auth.pages.login');
@@ -72,6 +82,10 @@ class AuthController extends Controller {
         return redirect(route('auth::login'));
 	}
 	
+	/**
+	 * Get the registration page.
+	 * @return Illuminate\Http\Response
+	 */
 	public function getRegister()
 	{
 		return view('auth.pages.register');

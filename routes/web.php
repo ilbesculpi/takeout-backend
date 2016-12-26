@@ -20,7 +20,7 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth::'], function() {
 	Route::post('/login', ['uses' => 'AuthController@postLogin']);
 	Route::get('/register', ['uses' => 'AuthController@getRegister', 'as' => 'register']);
 	Route::post('/register', ['uses' => 'AuthController@postRegister']);
-	Route::get('/logout', ['uses' => 'AuthController@getLogout']);
+	Route::get('/logout', ['uses' => 'AuthController@getLogout', 'as' => 'logout']);
 	Route::get('/forgot', ['uses' => 'AuthController@forgotPage', 'as' => 'forgot']);
 	
 });
