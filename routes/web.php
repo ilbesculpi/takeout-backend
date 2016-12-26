@@ -14,12 +14,24 @@
 Route::get('/', 'HomeController@home');
 
 // Auth routes
-Route::group(['namespace' => 'Auth'], function() {
+Route::group(['namespace' => 'Auth', 'as' => 'auth::'], function() {
 	
-	
+	Route::get('/login', ['uses' => 'AuthController@getLogin', 'as' => 'login']);
+	Route::post('/login', ['uses' => 'AuthController@postLogin']);
+	Route::get('/register', ['uses' => 'AuthController@getRegister', 'as' => 'register']);
+	Route::post('/register', ['uses' => 'AuthController@postRegister']);
+	Route::get('/logout', ['uses' => 'AuthController@getLogout']);
+	Route::get('/forgot', ['uses' => 'AuthController@forgotPage', 'as' => 'forgot']);
 	
 });
 
-Auth::routes();
+//Auth::routes();
+
+// Admin routes
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin::'], function() {
+	
+	Route::get('/dashboard', ['uses' => 'AdminController@dashboard', 'as' => 'dashboard']);
+	
+});
 
 Route::get('/home', 'HomeController@index');

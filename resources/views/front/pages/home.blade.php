@@ -77,7 +77,7 @@
 					<?php if( Auth::check() ): ?>
                     <a href="/admin/dashboard">Dashboard</a>
 					<?php else: ?>
-					<a href="/admin/login">Login</a>
+					<a href="<?= route('auth::login') ?>">Login</a>
 					<?php endif; ?>
                     <a href="/api/docs">API</a>
                     <a href="https://laravel.com/docs" target="_blank">Laravel</a>

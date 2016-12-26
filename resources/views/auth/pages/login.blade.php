@@ -39,11 +39,11 @@
 
 		<div>
 			<label>New user? </label>
-			<a href="register">Create new account</a>
+			<a href="<?= route('auth::register') ?>">Create new account</a>
 		</div>
 		<div>
 			<label>Forgot your password?</label>
-			<a href="register.html" class="text-center">resset password</a>
+			<a href="<?= route('auth::forgot') ?>" class="text-center">resset password</a>
 		</div>
 
 	</div>

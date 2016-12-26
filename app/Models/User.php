@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -60,6 +61,28 @@ class User extends Authenticatable
 	public function isGuest()
 	{
 		return $this->role === self::ROLE_GUEST;
+	}
+	
+	
+	//
+	// METHODS
+	//
+	
+	/**
+	 * Called after a successful login
+	 */
+	public function onLoginSuccess()
+	{
+		$this->last_login = Carbon::now();
+        $this->save();
+	}
+	
+	/**
+	 * Called after a failed login attempt.
+	 */
+	public function onLoginFail()
+	{
+		
 	}
 	
 }

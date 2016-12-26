@@ -24,12 +24,12 @@
 			
 			<div class="logo">
 				<div>
-					<a href="#">
+					<a href="<?= route('auth::login') ?>">
 						<img src="<?= $settings['app.logo'] ?>" alt="<?= $settings['app.name'] ?>" />
 					</a>
 				</div>
 				<div>
-					<a href="#"><?= $settings['app.name'] ?></a>
+					<a href="<?= route('auth::login') ?>"><?= $settings['app.name'] ?></a>
 				</div>
 			</div>
 			
