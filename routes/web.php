@@ -32,6 +32,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin::'], f
 	
 	Route::get('/dashboard', ['uses' => 'AdminController@dashboard', 'as' => 'dashboard']);
 	
+	Route::group(['namespace' => 'Catalog', 'prefix' => 'catalog'], function() {
+		
+		Route::resource('products', 'ProductsController');
+		
+	});
+	
 });
 
 Route::get('/home', 'HomeController@index');
