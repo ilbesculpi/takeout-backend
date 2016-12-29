@@ -18,4 +18,20 @@ class Category extends Model {
 	
 	protected $fillable = ['name', 'description', 'level', 'parent_id', 'status'];
 	
+	
+	//
+	// STATIC
+	//
+	
+	/**
+	 * Get the categories list.
+	 * @return \Illuminate\Database\Eloquent\Builder
+	 */
+	public static function getCategoryList()
+	{
+		$query = self::where('status', self::STATUS_ENABLED);
+		return $query;
+	}
+	
+	
 }

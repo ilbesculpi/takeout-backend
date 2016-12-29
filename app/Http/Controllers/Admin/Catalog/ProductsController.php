@@ -12,14 +12,22 @@ class ProductsController extends AdminController {
 	{
 		$products = Product::getProductCatalog()
 				->paginate(16);
+		
 		return view('admin.catalog.products.index', ['products' => $products]);
 	}
 	
 	public function create()
 	{
 		$product = new Product();
-		return view('admin.catalog.products.form', ['product' => $product])
-				->with('action', 'create');
+		
+		$categories = Category::getCategoryList()
+				->get();
+		
+		return view('admin.catalog.products.form', [
+			'product' => $product,
+			'categories' => $categories
+			])
+			->with('action', 'create');
 	}
 	
 }

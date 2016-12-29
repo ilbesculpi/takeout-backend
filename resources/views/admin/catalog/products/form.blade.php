@@ -64,10 +64,9 @@
 					<div class="form-group has-feedback">
 						<label for="categories">Categories</label>
 						<select class="form-control selectpicker" multiple>
-							<option>Breakfast</option>
-							<option>Lunch</option>
-							<option>Dinner</option>
-							<option>Sweets</option>
+							<?php foreach($categories as $category): ?>
+							<option value="<?= $category->id ?>"><?= $category->name ?></option>
+							<?php endforeach; ?>
 						</select>
 					</div>
 					
