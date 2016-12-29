@@ -62,6 +62,16 @@
 					</div>
 					
 					<div class="form-group has-feedback">
+						<label for="categories">Categories</label>
+						<select class="form-control selectpicker" multiple>
+							<option>Breakfast</option>
+							<option>Lunch</option>
+							<option>Dinner</option>
+							<option>Sweets</option>
+						</select>
+					</div>
+					
+					<div class="form-group has-feedback">
 						<label for="description">Description</label>
 						<textarea id="description" name="description" class="form-control"><?= $product->description ?></textarea>
 					</div>
