@@ -15,9 +15,9 @@ class BundleUsers extends Migration
 			$table->engine = 'MyISAM';
 			$table->increments('id');
 			$table->string('name', 64);
-			$table->string('email')
+			$table->string('email', 64)
 				->unique();
-			$table->char('password', 60)
+			$table->char('password', 64)
 				->nullable();
 			$table->string('avatar', 255)
 				->nullable();
