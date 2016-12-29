@@ -34,7 +34,7 @@
 			</li>
 			
 			<li>
-				<a href="#">
+				<a href="<?= url('admin/catalog/products') ?>">
 					<i class="fa fa-cubes"></i>
 					<span>Product Catalog</span>
 				</a>

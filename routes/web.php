@@ -28,7 +28,7 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth::'], function() {
 //Auth::routes();
 
 // Admin routes
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin::'], function() {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin::', 'middleware' => ['auth']], function() {
 	
 	Route::get('/dashboard', ['uses' => 'AdminController@dashboard', 'as' => 'dashboard']);
 	
@@ -40,4 +40,4 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin::'], f
 	
 });
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
