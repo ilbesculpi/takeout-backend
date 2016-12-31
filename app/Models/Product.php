@@ -17,6 +17,14 @@ class Product extends Model {
 	protected $fillable = ['name', 'description', 'level', 'parent_id', 'status'];
 	
 	
+	//
+	// RELATIONSHIPS
+	//
+	
+	public function categories()
+	{
+		return $this->belongsToMany('App\Models\Category', 'products_categories', 'product_id', 'category_id');
+	}
 	
 	//
 	// STATIC

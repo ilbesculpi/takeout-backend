@@ -62,7 +62,8 @@ class BundleProducts extends Migration
 			$table->increments('id');
 			$table->string('sku', 32);
 			$table->string('title', 128);
-			$table->string('slug', 128);
+			$table->string('slug', 128)
+					->nullable();
 			$table->string('description', 255)
 					->nullable();
 			$table->string('image', 255)

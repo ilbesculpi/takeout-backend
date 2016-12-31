@@ -20,7 +20,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="<?= url('admin/catalog/products') ?>">
+				<a href="<?= route('admin::products.index') ?>">
 					<i class="fa fa-cubes"></i>
 					Products
 				</a>
@@ -31,7 +31,7 @@
 		</ol>
 	</section>
 	
-	<form id="form-create-chapter" action="<?= url('admin/catalog/products/save') ?>" method="post" enctype="multipart/form-data" role="form">
+	<form id="form-create-chapter" action="<?= route('admin::products.store') ?>" method="post" enctype="multipart/form-data" role="form">
 	
 		<?= csrf_field() ?>
 		
@@ -63,7 +63,7 @@
 					
 					<div class="form-group has-feedback">
 						<label for="categories">Categories</label>
-						<select class="form-control selectpicker" multiple>
+						<select id="categories" name="categories[]" class="form-control selectpicker" multiple>
 							<?php foreach($categories as $category): ?>
 							<option value="<?= $category->id ?>"><?= $category->name ?></option>
 							<?php endforeach; ?>
@@ -77,7 +77,7 @@
 					
 					<div class="form-group has-feedback">
 						<label for="price">Price</label>
-						<input type="number" id="price" name="price" class="form-control" 
+						<input type="text" id="price" name="price" class="form-control" 
 							value="<?= $product->price ?>" placeholder="0.00">
 					</div>
 					
@@ -98,4 +98,20 @@
 	
 </div>
 
+@endsection
+
+
+@section('styles')
+<link rel="stylesheet" href="/themes/admin/vendor/bootstrap-select/dist/css/bootstrap-select.min.css">
+@endsection
+
+@section('scripts')
+<script src="/themes/admin/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="/themes/admin/vendor/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+<script>
+	$( document ).ready(function() {
+		console.log('ready');
+		$('#price').inputmask('9{1,4}.99', { numericInput: true });    //123456  =>  $234.56
+	});
+</script>
 @endsection

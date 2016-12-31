@@ -8,10 +8,10 @@
 		<link rel="stylesheet" href="/themes/admin/vendor/AdminLTE/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/themes/admin/vendor/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/themes/admin/vendor/Ionicons/css/ionicons.min.css">
-		<link rel="stylesheet" href="/themes/admin/vendor/bootstrap-select/dist/css/bootstrap-select.min.css">
 		<link rel="stylesheet" href="/themes/admin/vendor/AdminLTE/dist/css/AdminLTE.min.css">
 		<link rel="stylesheet" href="/themes/admin/vendor/AdminLTE/dist/css/skins/_all-skins.min.css">
 		<link rel="stylesheet" href="/themes/admin/css/styles.css" />
+		@yield('styles')
 	</head>
 	<body class="hold-transition skin-blue sidebar-mini">
 		
@@ -33,8 +33,8 @@
 		<script src="/themes/admin/vendor/AdminLTE/bootstrap/js/bootstrap.min.js"></script>
 		<script src="/themes/admin/vendor/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 		<script src="/themes/admin/vendor/AdminLTE/plugins/fastclick/fastclick.js"></script>
-		<script src="/themes/admin/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 		<script src="/themes/admin/vendor/AdminLTE/dist/js/app.min.js"></script>
+		@yield('scripts')
 		<!--<script src="../../dist/js/demo.js"></script>-->
 	</body>
 </html>
