@@ -70,6 +70,10 @@ class BundleProducts extends Migration
 					->nullable();
 			$table->decimal('price', 10, 2)
 					->nullable();
+			$table->smallInteger('stock_quantity')
+					->unsigned()
+					->nullable()
+					->default(0);
 			$table->integer('likes')
 					->nullable()
 					->default(0);

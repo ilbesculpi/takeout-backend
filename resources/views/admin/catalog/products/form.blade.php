@@ -81,12 +81,28 @@
 							value="<?= $product->price ?>" placeholder="0.00">
 					</div>
 					
+					<div class="form-group has-feedback">
+						<label for="image">Image</label>
+						<div class="row">
+							<div class="col-sm-6 col-md-3">
+								<img src="<?= $product->imageUrl ?>" width="100%" />
+							</div>
+							<div class="col-sm-12">
+								<p class="help-block">
+									Suggested image size: 640x480.<br>
+									Valid files: jpg, jpeg and png files. Max file size: 500k.
+								</p>
+								<input type="file" id="image" name="image" accept="image/*" />
+							</div>
+						</div>
+					</div>
+					
 				</div>
 				
 				<div class="box-footer">
 					<div class="form-group">
-						<input type="submit" class="btn btn-primary" value="Save" />
-						<a href="<?= url('admin/catalog/products') ?>" class="btn btn-default">Cancel</a>
+						<input type="submit" class="btn btn-success" value="Save" />
+						<a href="<?= route('admin::products.index') ?>" class="btn btn-default">Cancel</a>
 					</div>
 				</div>
 

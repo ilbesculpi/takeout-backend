@@ -11,10 +11,13 @@ class Product extends Model {
 	
 	const STATUS_ENABLED = 'enabled';
     const STATUS_DISABLED = 'disabled';
+	const DEFAULT_THUMBNAIL = '/images/products/thumbnail.jpg';
 	
 	protected $table = 'products';
 	
 	protected $fillable = ['name', 'description', 'level', 'parent_id', 'status'];
+	
+	protected $appends = ['format_price', 'thumbnail_url'];
 	
 	
 	//
@@ -26,17 +29,53 @@ class Product extends Model {
 		return $this->belongsToMany('App\Models\Category', 'products_categories', 'product_id', 'category_id');
 	}
 	
+	
+	//
+	// ATTRIBUTES
+	//
+	
+	public function getFormatPriceAttribute()
+	{
+		return '$' . number_format($this->attributes['price'], 2, '.', '');
+	}
+	
+	public function getImageUrlAttribute()
+	{
+		return $this->image ? url('/images/products/' . $this->image) : url(self::DEFAULT_THUMBNAIL);
+	}
+	
+	public function isEnabled()
+	{
+		return $this->status === self::STATUS_ENABLED;
+	}
+	
+	public function isDisabled()
+	{
+		return $this->status === self::STATUS_DISABLED;
+	}
+	
+	
 	//
 	// STATIC
 	//
 	
 	/**
-	 * Get the products catalog.
+	 * Get all the enabled products.
 	 * @return \Illuminate\Database\Eloquent\Builder
 	 */
 	public static function getProductCatalog()
 	{
 		$query = self::where('status', self::STATUS_ENABLED);
+		return $query;
+	}
+	
+	/**
+	 * Get all the products.
+	 * @return \Illuminate\Database\Eloquent\Builder
+	 */
+	public static function getProductList()
+	{
+		$query = self::query();
 		return $query;
 	}
 	

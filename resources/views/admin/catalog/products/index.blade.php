@@ -30,7 +30,7 @@
 		
 		<div class="row margin-bottom">
 			<div class="col-xs-12">
-				<a href="<?= url('admin/catalog/products/create') ?>" class="btn btn-sm btn-flat btn-primary">
+				<a href="<?= route('admin::products.create') ?>" class="btn btn-default btn-flat">
 					Add New Product
 				</a>
 			</div>
@@ -40,7 +40,7 @@
 			
 			<div class="box-header with-border">
 				
-				<h3 class="box-title">Products</h3>
+				<h3 class="box-title">Product Catalog</h3>
 				
 				<div class="box-tools pull-right">
 					<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -54,8 +54,25 @@
 			<div class="box-body">
 				
 				<?php if( $products->count() ): ?>
-				<table class="table">
-					<?php dump($products); ?>
+				<table class="table table-striped">
+					<tr>
+						<th>Image</th>
+						<th>SKU</th>
+						<th>Title</th>
+						<th>Quantity</th>
+						<th>Price</th>
+						<th>Status</th>
+					</tr>
+					<?php foreach($products as $product): ?>
+					<tr>
+						<td width="100"><img src="<?= $product->imageUrl ?>" class="img-responsive" /></td>
+						<td><?= $product->sku ?></td>
+						<td><?= $product->title ?></td>
+						<td><?= $product->stock_quantity ?></td>
+						<td><?= $product->format_price ?></td>
+						<td class="<?= $product->isEnabled() ? 'text-success' : 'text-danger' ?>"><?= $product->status ?></td>
+					</tr>
+					<?php endforeach; ?>
 				</table>
 				<?php else: ?>
 				<div class="alert alert-warning">No products found.</div>
