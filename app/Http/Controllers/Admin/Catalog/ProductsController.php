@@ -54,12 +54,56 @@ class ProductsController extends AdminController {
 		
 		$product->categories()->attach($request->input('categories'));
 		
-		return redirect( route('admin::products.show', ['product' => $product]) );
+		return redirect( route('admin::products.show', ['product' => $product]) )
+				->with('success', 'Product created successfully.');;
 	}
 	
 	public function show(Product $product)
 	{
 		return view('admin.catalog.products.show', ['product' => $product]);
+	}
+	
+	public function edit(Product $product)
+	{
+		$categories = Category::getCategoryList()
+				->get();
+		
+		return view('admin.catalog.products.form', [
+				'product' => $product,
+				'categories' => $categories
+			])
+			->with('action', 'edit');
+	}
+	
+	public function update(Product $product, Request $request)
+	{
+		$product->sku = $request->input('sku');
+		$product->title = $request->input('title');
+		$product->description = $request->input('description');
+		$product->price = $request->input('price');
+		
+		// upload picture
+		if( $request->hasFile('image') && $request->file('image')->isValid() ) {
+			$file = $request->file('image');
+			$filePath = public_path('images/products');
+			$fileName = 'p' . str_pad($product->id, 6, '0', STR_PAD_LEFT) . '.' . $file->getClientOriginalExtension();
+			$file->move($filePath, $fileName);
+			$product->image = $fileName;
+		}
+		
+		$product->save();
+		
+		$product->categories()->attach($request->input('categories'));
+		
+		return redirect( route('admin::products.show', ['product' => $product]) )
+				->with('success', 'Product updated successfully.');
+	}
+	
+	public function destroy(Product $product)
+	{
+		$product->delete();
+		return redirect( route('admin::products.index') )
+				->with('success', 'Product deleted successfully.');
 	}
 	
 }

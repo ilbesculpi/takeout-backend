@@ -2,6 +2,11 @@
 
 @section('title', 'Products')
 
+<?php
+	$form_action = $action === 'create' ? route('admin::products.store') : route('admin::products.update', compact('product'));
+	$form_method = $action === 'create' ? 'post' : 'put';
+?>
+
 @section('content')
 
 <div class="content-wrapper">
@@ -31,9 +36,10 @@
 		</ol>
 	</section>
 	
-	<form id="form-create-chapter" action="<?= route('admin::products.store') ?>" method="post" enctype="multipart/form-data" role="form">
+	<form id="form-create-chapter" action="<?= $form_action ?>" method="post" enctype="multipart/form-data" role="form">
 	
 		<?= csrf_field() ?>
+		<?= method_field($form_method) ?>
 		
 		<input type="hidden" name="id" value="<?= $product->id ?>" />
 		
@@ -65,7 +71,7 @@
 						<label for="categories">Categories</label>
 						<select id="categories" name="categories[]" class="form-control selectpicker" multiple>
 							<?php foreach($categories as $category): ?>
-							<option value="<?= $category->id ?>"><?= $category->name ?></option>
+							<option value="<?= $category->id ?>" <?= $product->categories->contains('id', $category->id) ? 'selected' : '' ?>><?= $category->name ?></option>
 							<?php endforeach; ?>
 						</select>
 					</div>

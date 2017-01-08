@@ -91,6 +91,11 @@ class AuthController extends Controller {
 		return view('auth.pages.register');
 	}
 	
+	/**
+	 * Creates a new user account.
+	 * @param Request $request
+	 * @return Illuminate\Http\Response
+	 */
 	public function postRegister(Request $request)
     {
         $user = new User();
@@ -107,9 +112,24 @@ class AuthController extends Controller {
 			->with('success', trans('auth.account_created'));
     }
 	
-	public function forgotPage()
+	/**
+	 * Get the forgot password page.
+	 * @return Illuminate\Http\Response
+	 */
+	public function getForgot()
 	{
 		return view('auth.pages.forgot');
+	}
+	
+	public function postForgot(Request $request)
+	{
+		$email = $request->input('email');
+		$user = User::where(['email' => $email])->first();
+		if( !$user ) {
+			return redirect(route('auth::forgot'))
+				->withInput()
+				->with('error', trans('auth.invalid_forgot_email'));
+		}
 	}
 	
 }
