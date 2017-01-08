@@ -21,7 +21,8 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth::'], function() {
 	Route::get('/register', ['uses' => 'AuthController@getRegister', 'as' => 'register']);
 	Route::post('/register', ['uses' => 'AuthController@postRegister']);
 	Route::get('/logout', ['uses' => 'AuthController@getLogout', 'as' => 'logout']);
-	Route::get('/forgot', ['uses' => 'AuthController@forgotPage', 'as' => 'forgot']);
+	Route::get('/forgot', ['uses' => 'AuthController@getForgot', 'as' => 'forgot']);
+	Route::post('/forgot', ['uses' => 'AuthController@postForgot']);
 	
 });
 

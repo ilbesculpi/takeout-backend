@@ -27,6 +27,7 @@
 				</div>
 			</div>
 			
+			@include('auth.partials.flash')
 			@yield('content')
 			
 		</div>
