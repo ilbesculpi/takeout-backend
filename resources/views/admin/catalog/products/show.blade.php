@@ -41,7 +41,7 @@
 				<form action="<?= route('admin::products.destroy', compact('product')) ?>" method="post" style="display:inline;">
 					<?= csrf_field() ?>
 					<?= method_field('DELETE') ?>
-					<button type="submit" class="btn btn-danger btn-flat">Delete</button>
+					<button type="submit" class="btn btn-danger btn-flat" data-confirm="Are you sure you want to delete this Product?">Delete</button>
 				</form>
 			</div>
 		</div>

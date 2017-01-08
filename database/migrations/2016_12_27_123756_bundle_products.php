@@ -36,7 +36,8 @@ class BundleProducts extends Migration
 			$table->engine = 'MyISAM';
 			$table->increments('id');
 			$table->string('name', 64);
-			$table->string('slug', 64);
+			$table->string('slug', 64)
+					->nullable();
 			$table->string('description', 255)
 					->nullable();
 			$table->integer('parent_id')

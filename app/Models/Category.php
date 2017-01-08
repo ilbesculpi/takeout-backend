@@ -20,6 +20,32 @@ class Category extends Model {
 	
 	
 	//
+	// RELATIONSHIPS
+	//
+	
+	public function parent()
+	{
+		return $this->belongsTo('App\Models\Category', 'parent_id');
+	}
+	
+	
+	
+	//
+	// ATTRIBUTES
+	//
+	
+	public function isEnabled()
+	{
+		return $this->status === self::STATUS_ENABLED;
+	}
+	
+	public function isDisabled()
+	{
+		return $this->status === self::STATUS_DISABLED;
+	}
+	
+	
+	//
 	// STATIC
 	//
 	
@@ -29,9 +55,18 @@ class Category extends Model {
 	 */
 	public static function getCategoryList()
 	{
-		$query = self::where('status', self::STATUS_ENABLED);
+		$query = self::query();
 		return $query;
 	}
 	
+	/**
+	 * Get the enabled categories.
+	 * @return \Illuminate\Database\Eloquent\Builder
+	 */
+	public function getEnabledCategories()
+	{
+		$query = self::where(['status' => self::STATUS_ENABLED]);
+		return $query;
+	}
 	
 }

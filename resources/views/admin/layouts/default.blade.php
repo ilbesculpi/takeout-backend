@@ -34,6 +34,7 @@
 		<script src="/themes/admin/vendor/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 		<script src="/themes/admin/vendor/AdminLTE/plugins/fastclick/fastclick.js"></script>
 		<script src="/themes/admin/vendor/AdminLTE/dist/js/app.min.js"></script>
+		<script src="/themes/admin/js/admin.js"></script>
 		@yield('scripts')
 		<!--<script src="../../dist/js/demo.js"></script>-->
 	</body>

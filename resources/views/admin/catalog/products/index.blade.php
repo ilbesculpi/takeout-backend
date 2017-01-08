@@ -55,15 +55,25 @@
 						<th>Quantity</th>
 						<th>Price</th>
 						<th>Status</th>
+						<th>&nbsp;</th>
 					</tr>
 					<?php foreach($products as $product): ?>
 					<tr>
-						<td width="100"><img src="<?= $product->imageUrl ?>" class="img-responsive" /></td>
+						<td width="100">
+							<a href="<?= route('admin::products.show', ['product' => $product]) ?>">
+								<img src="<?= $product->imageUrl ?>" class="img-responsive" />
+							</a>
+						</td>
 						<td><?= $product->sku ?></td>
 						<td><?= $product->title ?></td>
 						<td><?= $product->stock_quantity ?></td>
 						<td><?= $product->format_price ?></td>
 						<td class="<?= $product->isEnabled() ? 'text-success' : 'text-danger' ?>"><?= $product->status ?></td>
+						<td>
+							<a href="<?= route('admin::products.show', ['product' => $product]) ?>">
+								View
+							</a>
+						</td>
 					</tr>
 					<?php endforeach; ?>
 				</table>

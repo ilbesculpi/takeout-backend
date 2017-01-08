@@ -34,7 +34,14 @@
 			</li>
 			
 			<li>
-				<a href="<?= url('admin/catalog/products') ?>">
+				<a href="<?= route('admin::categories.index') ?>">
+					<i class="fa fa-tags"></i>
+					<span>Categories</span>
+				</a>
+			</li>
+			
+			<li>
+				<a href="<?= route('admin::products.index') ?>">
 					<i class="fa fa-cubes"></i>
 					<span>Product Catalog</span>
 				</a>

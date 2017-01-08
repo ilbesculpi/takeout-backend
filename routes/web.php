@@ -35,6 +35,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin::', 'm
 	
 	Route::group(['namespace' => 'Catalog', 'prefix' => 'catalog'], function() {
 		
+		Route::resource('categories', 'CategoriesController');
+		
 		Route::resource('products', 'ProductsController');
 		
 	});
