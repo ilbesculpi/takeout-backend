@@ -7,6 +7,9 @@
 class_name: AcceptanceTester
 modules:
     enabled:
-        - PhpBrowser:
+        #- PhpBrowser:
+        #    url: http://takeout.io
+        - Laravel5:
             url: http://takeout.io
+            environment_file: .env.testing
         - \Helper\Acceptance

@@ -16,6 +16,9 @@ class SignInCest
 	public function testLoginPage(AcceptanceTester $I)
 	{
 		$I->wantTo('check the login form is ok');
+		
+		// expectations...
+		$I->expect('the form is present');
 		$I->seeInTitle('Sign In');
 		$I->seeElement('[name=email]');
 		$I->seeElement('[name=password]');
@@ -28,10 +31,11 @@ class SignInCest
 		$I->fillField('password', 'adminadmin');
 		$I->click('Sign In');
 		
-		// expected results
+		// expectations...
+		$I->expect('getting to the dashboard page');
 		$I->seeCurrentUrlEquals('/admin/dashboard');
-		$I->seeInTitle('Dashboard');
-		$I->dontSeeInTitle('Sign In');
+		$I->canSeeInTitle('Dashboard');
+		$I->cantSeeInTitle('Sign In');
 	}
 	
 	public function testLoginInvalidCredentials(AcceptanceTester $I)
@@ -42,7 +46,8 @@ class SignInCest
 		$I->fillField('password', 'qwerty');
 		$I->click('Sign In');
 		
-		// expected results
+		// expectations...
+		$I->expect('to see an error in the login page');
 		$I->seeCurrentUrlEquals('/login');
 		$I->canSeeElement('.alert');
 		$I->canSee('Invalid username or password');
