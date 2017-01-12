@@ -33,6 +33,15 @@ class UsersSeeder extends Seeder
 			'avatar' => User::DEFAULT_PICTURE,
 			'role' => User::ROLE_ADMIN,
 			'status' => User::STATUS_ACTIVE
+		],
+		[
+			'id' => 4,
+			'name' => 'Codeception User',
+			'email' => 'codeception@takeout.io',
+			'password' => 'testing!',
+			'avatar' => User::DEFAULT_PICTURE,
+			'role' => User::ROLE_ADMIN,
+			'status' => User::STATUS_ACTIVE
 		]
 	];
 		
