@@ -15,7 +15,7 @@ return [
 
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-	'failed_login' => 'Wrong username or password.',
+	'failed_login' => 'Invalid username or password.',
 	'account_created' => 'Your account has been created.',
 	'invalid_forgot_email' => 'Email address not found.',
 
