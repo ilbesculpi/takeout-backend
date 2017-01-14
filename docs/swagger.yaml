@@ -1,0 +1,75 @@
+swagger: '2.0'
+info:
+  title: Takeout.io API
+  description: Takeout API docs
+  version: "0.1.0"
+host: takeout.io
+basePath: /api
+schemes:
+  - https
+produces:
+  - application/json
+paths:
+  /customers:
+    get:
+      summary: Returns a list of the customers on the system.
+      responses:
+        200:
+          description: customer list
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                description: status code
+              customers:
+                type: array
+                items:
+                  $ref: '#/definitions/Customer'
+    post:
+      summary: Creates a new pet in the store.  Duplicates are allowed
+      parameters:
+        - name: first_name
+          in: body
+          description: Customer first name
+          required: true
+          schema:
+            $ref: "#/definitions/Customer"
+        - name: last_name
+          in: body
+          description: Customer last name
+          required: true
+        - name: email
+          in: body
+          description: Customer email address
+          required: true
+          schema:
+            $ref: "#/definitions/Customer"
+        - name: password
+          description: Customer password
+          in: body
+          required: false
+          schema:
+            $ref: "#/definitions/Customer"
+      responses:
+        200:
+          description: registration success
+definitions:
+  Customer:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Unique identifier representing a specific customer.
+      first_name:
+        type: string
+        description: Customer's first name.
+      last_name:
+        type: string
+        description: Customer's last name.
+      email:
+        type: string
+        description: Customer's email address.
+      password:
+        type: string
+        description: Customer's password.
