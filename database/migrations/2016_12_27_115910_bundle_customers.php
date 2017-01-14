@@ -26,9 +26,16 @@ class BundleCustomers extends Migration
 				->nullable();
 			$table->string('fbuid', 64)
 				->nullable();
+			$table->smallInteger('login_attempts')
+				->nullable()
+				->default(0);
 			$table->enum('status', ['active', 'pending', 'blocked'])
 				->nullable()
 				->default('active');
+			$table->char('activation_token', 64)
+				->nullable();
+			$table->char('reset_token', 64)
+				->nullable();
 			$table->timestamps();
         });
     }

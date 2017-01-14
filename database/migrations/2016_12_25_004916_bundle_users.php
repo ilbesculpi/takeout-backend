@@ -26,11 +26,14 @@ class BundleUsers extends Migration
 				->default('guest');
 			$table->timestamp('last_login')
 				->nullable();
+			$table->smallInteger('login_attempts')
+				->nullable()
+				->default(0);
 			$table->enum('status', ['active', 'pending', 'blocked'])
 				->nullable()
 				->default('active');
 			$table->rememberToken();
-			$table->char('activation_token', 60)
+			$table->char('activation_token', 64)
 				->nullable();
 			$table->timestamps();
 		});
