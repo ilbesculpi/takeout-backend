@@ -12,14 +12,19 @@ class Customer extends Authenticatable
     const STATUS_ACTIVE = 'active';
     const STATUS_BLOCKED = 'blocked';
 
-    const DEFAULT_PICTURE = '/images/customer/avatar.png';
+    const DEFAULT_PICTURE = '/images/customers/avatar.png';
 	
     /**
      * The attributes that are mass assignable.
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'avatar', 'fbuid'
+        'first_name',
+		'last_name',
+		'email',
+		'password',
+		'avatar',
+		'fbuid'
     ];
 
     /**
@@ -27,7 +32,9 @@ class Customer extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password'
+        'password',
+		'activation_token',
+		'reset_token'
     ];
 	
 	
