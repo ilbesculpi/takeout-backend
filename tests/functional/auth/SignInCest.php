@@ -3,17 +3,17 @@
 class SignInCest
 {
 	
-    public function _before(AcceptanceTester $I)
+    public function _before(FunctionalTester $I)
     {
 		$I->amOnPage('/login');
     }
 
-    public function _after(AcceptanceTester $I)
+    public function _after(FunctionalTester $I)
     {
 		
     }
 	
-	public function testLoginPage(AcceptanceTester $I)
+	public function testLoginPage(FunctionalTester $I)
 	{
 		$I->wantTo('check the login form is ok');
 		
@@ -24,7 +24,7 @@ class SignInCest
 		$I->seeElement('[name=password]');
 	}
 	
-	public function testLoginSuccess(AcceptanceTester $I)
+	public function testLoginSuccess(FunctionalTester $I)
 	{
 		$I->wantTo('login to backend with a valid user');
 		$I->fillField('email', 'admin@localhost.com');
@@ -38,7 +38,7 @@ class SignInCest
 		$I->cantSeeInTitle('Sign In');
 	}
 	
-	public function testLoginInvalidCredentials(AcceptanceTester $I)
+	public function testLoginInvalidCredentials(FunctionalTester $I)
 	{
 		$I->wantTo('login to backend with invalid credentials');
 		$I->amGoingTo('submit invalid credentials');
