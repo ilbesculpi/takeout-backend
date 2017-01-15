@@ -35,4 +35,21 @@ class CustomersController extends ApiController {
 		];
 	}
 	
+	public function show($id)
+	{
+		$customer = Customer::find($id);
+		
+		if( !$customer ) {
+			return response()->json([
+				'status' => 'error',
+				'message' => 'Record Not Found'
+			], 404);
+		}
+		
+		return response()->json([
+			'status' => 'ok',
+			'customer' => $customer
+		], 200);
+	}
+	
 }
