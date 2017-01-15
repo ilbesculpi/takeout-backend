@@ -10,13 +10,18 @@ use App\Models\Customer;
  */
 class CustomersController extends ApiController {
 	
+	/**
+	 * Retrieves a list of customers registered.
+	 * @return Illuminate\Http\Response
+	 */
 	public function index()
 	{
 		$customers = Customer::all();
-		return [
-			'status' => 200,
+		$payload = [
+			'status' => 'ok',
 			'customers' => $customers
 		];
+		return response()->json($payload, 200);
 	}
 	
 	public function store(Request $request)
@@ -24,15 +29,17 @@ class CustomersController extends ApiController {
 		$customer = new Customer();
 		$customer->first_name = $request->input('first_name');
 		$customer->last_name = $request->input('last_name');
-		$customer->email = $requrest->input('email');
+		$customer->email = $request->input('email');
 		$customer->password = bcrypt($request->input('password'));
 		$result = $customer->save();
 		
-		return [
-			'status' => 200,
+		$payload = [
+			'status' => 'ok',
 			'result' => $result,
 			'customer' => $customer
 		];
+		
+		return response()->json($payload, 200);
 	}
 	
 	public function show($id)

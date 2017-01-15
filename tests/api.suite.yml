@@ -7,3 +7,5 @@ modules:
             depends: Laravel5
         - Laravel5:
             environment_file: .env.testing
+            cleanup: true
+            url: http://takeout.io
