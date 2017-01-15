@@ -31,15 +31,31 @@ class CustomersController extends ApiController {
 		$customer->last_name = $request->input('last_name');
 		$customer->email = $request->input('email');
 		$customer->password = bcrypt($request->input('password'));
-		$result = $customer->save();
+		$customer->status = Customer::STATUS_ACTIVE;
 		
-		$payload = [
-			'status' => 'ok',
-			'result' => $result,
-			'customer' => $customer
-		];
+		try {
 		
-		return response()->json($payload, 200);
+			$result = $customer->save();
+		
+			if( !$result ) {
+				throw new \Exception('Unable to process the request');
+			}
+			
+			$payload = [
+				'status' => 'ok',
+				'customer' => $customer
+			];
+			
+			return response()->json($payload, 200);
+		}
+		catch(\Exception $e) {
+			$payload = [
+				'result' => 'Error',
+				'message' => $e->getMessage()
+			];
+			return response()->json($payload, 500);
+		}
+		
 	}
 	
 	public function show($id)
