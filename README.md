@@ -1,7 +1,7 @@
 
 ## Takeout.io
 
-Takeout.io is a customizable backend for managing smalls takeaway-food business.
+Takeout.io is a customizable backend for managing smalls takeaway-food business. The application is based on [Laravel 5.3](https://laravel.com/docs/5.3) and using MySQL database.
 
 It handles the following aspects:
 
