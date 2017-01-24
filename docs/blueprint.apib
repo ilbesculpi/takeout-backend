@@ -1,0 +1,126 @@
+FORMAT: 1A
+
+# Takeout.io
+
+Takeout.io is a simple API that allows mobile applications to consume data from the system.
+
+# Group Customers
+
+Resources related to the Customers API.
+
+## Customers [/customers]
+
+### GET
+
+Retrieves the list of customers.
+
++ Response 200 (application/json)
+
+        {
+                "status": "ok",
+                "customers": [
+                        {
+                                "id": 1,
+                                "first_name": "...",
+                                "last_name": "...",
+                                "email": "..."
+                        },
+                        {
+                                "id": 2,
+                                "first_name": "...",
+                                "last_name": "...",
+                                "email": "..."
+                        },
+                        {
+                                "id": 3,
+                                "first_name": "...",
+                                "last_name": "...",
+                                "email": "..."
+                        }
+                ]
+        }
+
+### POST
+
+Registers a new Customer in the system.
+
++ Request (body)
+    + Attributes
+        - customer (Customer)
+
++ Response 200 (application/json)
+
+        {
+                "status": "ok",
+                "customer": {
+	                "id": 1,
+	                "first_name": "...",
+	                "last_name": "...",
+	                "email": "...",
+	                "status": "..."
+                }
+        }
+
+
+## Customer [/customers/{id}]
+
++ Parameters
+  + id: `1` (number, required) - The unique ID of the Customer
+
+### GET
+
+Fetch a customer by id.
+
++ Response 200 (application/json)
+
+        {
+                "status": "ok",
+                "customer": {
+                        "id": 1,
+                        "first_name": "...",
+                        "last_name": "...",
+                        "email": "...",
+                        "status": "..."
+                }
+        }
+
++ Response 404 (application/json)
+
+        {
+                "status": "error",
+                "message": "Record Not Found"
+        }
+
+
+### PUT
+
+Edit an existing Customer.
+
++ Request (body)
+
+        Customer
+
++ Response 200 (application/json)
+
+        {
+                "status": "ok",
+                "customer": {
+                        "id": 1,
+                        "first_name": "...",
+                        "last_name": "...",
+                        "email": "...",
+                        "status": "..."
+                }
+        }
+
+
+
+# Data Structures
+
+## Customer (object)
+
+- id: `1` (number, required) - The unique ID of the customer.
+- first_name: `George` (string, required) - Customer's first name.
+- last_name: `Harris` (string, required) - Customer's last name.
+- email: `george.harris@takeout.io` (string, required) - Customer's email address.
+

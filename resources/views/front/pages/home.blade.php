@@ -79,7 +79,7 @@
 					<?php else: ?>
 					<a href="<?= route('auth::login') ?>">Login</a>
 					<?php endif; ?>
-                    <a href="/api/docs">API</a>
+                    <a href="http://docs.takeout.io" target="_blank">API Docs</a>
                     <a href="https://laravel.com/docs" target="_blank">Laravel</a>
                 </div>
 				
