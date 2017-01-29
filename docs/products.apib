@@ -1,0 +1,61 @@
+FORMAT: 1A
+
+# Takeout.io
+
+Takeout.io is a simple API that allows mobile applications to consume data from the system.
+
+# Group Products
+
+Resources related to the Categories API.
+
+## Categories [/products/catalog/{id}]
+
++ Parameters
+  + id: `1` (number, required) - The unique ID of the Category
+
+### GET
+
+Retrieves the list of products by category.
+
++ Response 200 (application/json)
+
+        {
+                "status": "ok",
+                "category": {
+                        "id": 1,
+                        "name": "...",
+                        "slug": "...",
+                        "description": "...",
+			"status": "..."
+                },
+                "products": [
+                        {
+                                "id": 1,
+                                "sku": "...",
+                                "title": "...",
+                                "description": "...",
+                                "price": 10.99,
+                                "stock_quantity": 100,
+                                "status": "..."
+                        },
+                        {
+                                "id": 2,
+                                "sku": "...",
+                                "title": "...",
+                                "description": "...",
+                                "price": 10.99,
+                                "stock_quantity": 100,
+                                "status": "..."
+                        },
+                        {
+                                "id": 3,
+                                "sku": "...",
+                                "title": "...",
+                                "description": "...",
+                                "price": 10.99,
+                                "stock_quantity": 100,
+                                "status": "..."
+                        }
+                ]
+        }
+

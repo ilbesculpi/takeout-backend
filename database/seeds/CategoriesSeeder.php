@@ -62,6 +62,15 @@ class CategoriesSeeder extends Seeder
 			'level' => 1,
 			'status' => Category::STATUS_DISABLED
 		],
+		[
+			'id' => 7,
+			'name' => 'Demo',
+			'slug' => 'demo',
+			'description' => '',
+			'parent_id' => null,
+			'level' => 1,
+			'status' => Category::STATUS_ENABLED
+		],
 	];
 	
     /**
@@ -72,6 +81,7 @@ class CategoriesSeeder extends Seeder
     {
         foreach($this->records as $record) {
 			$category = Category::firstOrNew(['slug' => $record['slug']]);
+			$category->id = $record['id'];
 			$category->name = $record['name'];
 			$category->description = $record['description'];
 			$category->parent_id = $record['parent_id'];
@@ -80,4 +90,5 @@ class CategoriesSeeder extends Seeder
 			$category->save();
 		}
     }
+	
 }

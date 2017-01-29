@@ -13,12 +13,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Models\User::class, function(Faker\Generator $faker) {
-    static $password;
-
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'password' => bcrypt(str_random(8)),
         'remember_token' => str_random(10),
     ];
 });
@@ -28,15 +26,15 @@ $factory->define(App\Models\Customer::class, function(Faker\Generator $faker) {
         'first_name' => $faker->name,
 		'last_name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'password' => bcrypt('qwerty'),
+        'password' => bcrypt(str_random(8)),
     ];
 });
 
 $factory->define(App\Models\Category::class, function(Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
-		'slug' => $faker->slug(3),
-		'description' => $faker->company,
+        'name' => $faker->catchPhrase,
+		'slug' => $faker->slug(2),
+		'description' => $faker->text(255),
 		'status' => App\Models\Category::STATUS_ENABLED
     ];
 });
@@ -50,5 +48,32 @@ $factory->state(App\Models\Category::class, 'enabled', function(Faker\Generator 
 $factory->state(App\Models\Category::class, 'disabled', function(Faker\Generator $faker) {
     return [
 		'status' => App\Models\Category::STATUS_DISABLED
+    ];
+});
+
+
+$factory->define(App\Models\Product::class, function(Faker\Generator $faker) {
+    return [
+        'sku' => $faker->uuid,
+		'title' => $faker->catchPhrase,
+		'slug' => $faker->slug(3),
+		'description' => $faker->text(255),
+		'image' => $faker->image(),
+		'price' => $faker->randomFloat(2, 0, 100),
+		'stock_quantity' => $faker->numberBetween(0, 100),
+		'likes' => $faker->numberBetween(0, 100),
+		'status' => App\Models\Category::STATUS_ENABLED
+    ];
+});
+
+$factory->state(App\Models\Product::class, 'enabled', function(Faker\Generator $faker) {
+    return [
+		'status' => App\Models\Product::STATUS_ENABLED
+    ];
+});
+
+$factory->state(App\Models\Product::class, 'disabled', function(Faker\Generator $faker) {
+    return [
+		'status' => App\Models\Product::STATUS_DISABLED
     ];
 });

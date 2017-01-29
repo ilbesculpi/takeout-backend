@@ -15,9 +15,13 @@ class Product extends Model {
 	
 	protected $table = 'products';
 	
-	protected $fillable = ['name', 'description', 'level', 'parent_id', 'status'];
+	protected $fillable = ['name', 'sku', 'description', 'price', 'status'];
 	
-	protected $appends = ['format_price', 'thumbnail_url'];
+	protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+	
+	protected $appends = ['format_price', 'image_url'];
+	
+	protected $hidden = ['deleted_at'];
 	
 	
 	//

@@ -61,7 +61,7 @@ class BundleProducts extends Migration
 		Schema::create('products', function(Blueprint $table) {
 			$table->engine = 'MyISAM';
 			$table->increments('id');
-			$table->string('sku', 32);
+			$table->string('sku', 64);
 			$table->string('title', 128);
 			$table->string('slug', 128)
 					->nullable();

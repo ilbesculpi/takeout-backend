@@ -18,6 +18,10 @@ class Category extends Model {
 	
 	protected $fillable = ['name', 'description', 'level', 'parent_id', 'status'];
 	
+	protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+	
+	protected $hidden = ['deleted_at'];
+	
 	
 	//
 	// RELATIONSHIPS
@@ -28,6 +32,10 @@ class Category extends Model {
 		return $this->belongsTo('App\Models\Category', 'parent_id');
 	}
 	
+	public function products()
+	{
+		return $this->belongsToMany('App\Models\Product', 'products_categories', 'category_id', 'product_id');
+	}
 	
 	
 	//

@@ -23,4 +23,7 @@ Route::group(['namespace' => 'Api', 'as' => 'auth::'], function() {
 	
 	Route::resource('categories', 'CategoriesController');
 	
+	Route::get('products/catalog/{category}', 'ProductsController@catalog');
+	Route::resource('products', 'ProductsController');
+	
 });
