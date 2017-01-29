@@ -8,4 +8,6 @@
 
 ## Generate The Api Pages
 
-`aglio --theme-variables slate -i blueprint.apib -o index.html`
+`aglio --theme-variables slate -i customers.apib -o customers.html`
+`aglio --theme-variables slate -i categories.apib -o categories.html`
+`aglio --theme-variables slate -i products.apib -o products.html`

@@ -63,7 +63,7 @@ class Category extends Model {
 	 * Get the enabled categories.
 	 * @return \Illuminate\Database\Eloquent\Builder
 	 */
-	public function getEnabledCategories()
+	public static function getEnabledCategories()
 	{
 		$query = self::where(['status' => self::STATUS_ENABLED]);
 		return $query;

@@ -31,3 +31,24 @@ $factory->define(App\Models\Customer::class, function(Faker\Generator $faker) {
         'password' => bcrypt('qwerty'),
     ];
 });
+
+$factory->define(App\Models\Category::class, function(Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+		'slug' => $faker->slug(3),
+		'description' => $faker->company,
+		'status' => App\Models\Category::STATUS_ENABLED
+    ];
+});
+
+$factory->state(App\Models\Category::class, 'enabled', function(Faker\Generator $faker) {
+    return [
+		'status' => App\Models\Category::STATUS_ENABLED
+    ];
+});
+
+$factory->state(App\Models\Category::class, 'disabled', function(Faker\Generator $faker) {
+    return [
+		'status' => App\Models\Category::STATUS_DISABLED
+    ];
+});

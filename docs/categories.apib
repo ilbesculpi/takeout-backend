@@ -1,0 +1,45 @@
+FORMAT: 1A
+
+# Takeout.io
+
+Takeout.io is a simple API that allows mobile applications to consume data from the system.
+
+# Group Customers
+
+Resources related to the Categories API.
+
+## Categories [/categories]
+
+### GET
+
+Retrieves the list of categories.
+
++ Response 200 (application/json)
+
+        {
+                "status": "ok",
+                "categories": [
+                        {
+                                "id": 1,
+                                "name": "...",
+                                "slug": "...",
+                                "description": "...",
+				"status": "..."
+                        },
+                        {
+                                "id": 2,
+                                "name": "...",
+                                "slug": "...",
+                                "description": "...",
+				"status": "..."
+                        },
+                        {
+                                "id": 3,
+                                "name": "...",
+                                "slug": "...",
+                                "description": "...",
+				"status": "..."
+                        }
+                ]
+        }
+

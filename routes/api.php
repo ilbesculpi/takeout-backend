@@ -21,4 +21,6 @@ Route::group(['namespace' => 'Api', 'as' => 'auth::'], function() {
 	
 	Route::resource('customers', 'CustomersController');
 	
+	Route::resource('categories', 'CategoriesController');
+	
 });

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Customer;
 
 /**
- * Customers Controller
+ * API Customers Controller
  */
 class CustomersController extends ApiController {
 	
