@@ -17,7 +17,7 @@ class BundleUsers extends Migration
 			$table->string('name', 64);
 			$table->string('email', 64)
 				->unique();
-			$table->char('password', 64)
+			$table->char('password', 60)
 				->nullable();
 			$table->string('avatar', 255)
 				->nullable();
