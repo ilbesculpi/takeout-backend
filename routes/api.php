@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //})->middleware('auth:api');
 
-Route::group(['namespace' => 'Api', 'as' => 'auth::'], function() {
+Route::group(['namespace' => 'Api', 'as' => 'auth::', 'middleware' => ['cors']], function() {
 	
 	Route::resource('customers', 'CustomersController');
 	
